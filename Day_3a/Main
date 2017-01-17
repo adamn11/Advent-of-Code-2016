@@ -1,0 +1,31 @@
+import os.path
+import sys
+
+
+def is_triangle(a,b,c):
+    part_A = int(a) + int(b)
+    part_B = int(b) + int(c)
+    part_C = int(a) + int(c)
+
+    if (part_A > int(c) and part_C > int(b) and part_B > int(a)):
+        return True
+    else:
+        return False
+
+
+def main():
+    file_name = "input"
+    count = 0
+    if os.path.isfile(file_name) == False:
+        print "File does not exist"
+        sys.exit()
+    with open('input', 'r') as my_file:
+        for lines in my_file.readlines():
+            values = lines.split()
+            if (is_triangle(values[0],values[1],values[2])):
+                count += 1
+    print count
+
+
+if __name__ == "__main__":
+    main()
